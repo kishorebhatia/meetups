@@ -1,0 +1,78 @@
+Microservices at Yodle
+
+Microservices as a deployment challenge
+
+Google uses a single repo for all their services but still manages and deploys them separately - so the same challenges
+
+Microservices Containers don't use connection pools - so you tend to max out the # of db connections
+
+Service Discovery Vs Smart pipes
+Service discovery - services depend on the SD f/work and for polyglot libs you'd want to not maintain deps - Smart pipes are better than SD
+
+Zookeeper -> Hipache
+
+CD - Canary Testing -> Shadow test env deployed in parallel to prod with the new service change -> then make this prod.
+Sentinel, Cerebro - agents in env that are helping deploy and health check.
+
+Monitoring: Forest and the Tree problem:
+You're watching the trees in so much details that you don't know the higher level Forest picture (if something is going wrong there)
+writing to StacksD - you can generate a time series graph
+
+Patch JVM - micro-services testing contracts.
+
+Containers:
+
+Docker tags - old images cleanup
+Automated updating of docker containers based on newer images being published.
+
+
+Monitoring: Graphite/Grafana
+Published to statsD or grafana - dashboards
+
+No alerting
+
+Docker base images -> Docker app images and SCM changesets
+
+SCM:
+bitbucket
+Etsy's Hound for code searches across repos
+
+Vantage: dependency mgmt for the system (tracks every dep in the system)
+Based off of Claire (Docker containers OS dep mgmt)
+
+Check Bamboo slides - challenges
+Build tooling, build scripting
+Can't maintain build plans at Scale and iterate easily
+
+Sentinel - Human service discovery endpoint
+
+Contracts - db schema changes,
+For ELK stack update maintain two parallel db states
+
+Teams: Pioneers, early adopters and everybody
+Tech talks as main education
+Maturity of the tooling
+Roll out a service/tool - make it easier
+
+Some was push, some was adoption, some was enforced becoz the underlying things had changed or became easy enough to move to new system
+
+Service bloat
+
+Group services together as - Areas of Concern so they grow and optimize together - use specific/shared schemas etc.
+
+How to do distributed architecture when you've given the keys of the kingdom away to the developers who now own everything
+
+Chef Habitat and RH Kubernetes
+---------------
+
+cerebro runs as a Microservice (and deploys other Microservices)
+a service that can deploy and test itself (running a small agent of my own service)
+Jetpack test lib
+
+Canary release, Canary partial (real trafic maybe 10% to begin with)
+Test metrics and then turn on the full load to the new service
+
+SEntinel - Deployment visibility (Release automation)
+
+Vantage - Dependency mgmt across Yodle services.... 
+Adoption, vulnerabilities and library checks
